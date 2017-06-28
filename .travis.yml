@@ -6,9 +6,9 @@ services:
 before_install:
   - make dev-up
 
-# notifications:
-#   slack:
-#     secure: ...
+notifications:
+  slack:
+    secure: TruKRn8bRkHurqNEdtCmJOGXFbqVi3ic81ZcbE5HlNPWPfD4hcXYbeRy7550Gk2QtQJM+XE0rGaEgJfal9YRE9H7QHeTtzEnAp2T4BaC1wYdO77wOsjfRV1joILowU0WBkSSqO5SYaHQB7BWA1tgJDSb/rI1Uc30D0PvnTqYgxgjykp9RcyL66T3vbFf2+EQ2Q7TT/dvo/Cu7GEyc5FpbQcC/HunimN4DFqySzF1rHy73g28WRnxPSkxQ5SNLm5pZsleggoxbeuEIQB71deujg6Z8k5/6h5zBjNEpiFEUImIzYhfEiUOeifdJiHkqsJfIGZMLBc3+aiICZ8QKOHtfbQ/uESNy1e/rBolyzNA0NckM2KzHJ9E9iVCeZL3bzndT6rFxjHB4mi/rbjH/SZNDL3SJ9TZY5D+CuBEIC0YdpxtF9Jn1aFa42M/plnMEhoth4c3HkX07ea6bfucK5YPzJagOOQFIFGE2x89C0AnOMAa8a1bh3o58RmiitEOG/neQwySd62DaGRdVfmJ6tWFKcfyAR8fCXchvddH/cLdwubmenHmhtcqlZy5sQZYktfZUxuTg74+2h1LAydWzwCoOV/go2RfjPWWhZklAKNPD9HO6S7SCZjMZLEsOuqTIrq9MKdvTtmubaeh5PSUKK2PIWxXBYz6w/tjiEgpifQTUk0=
 
 script:
   - make test

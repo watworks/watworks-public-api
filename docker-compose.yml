@@ -11,7 +11,6 @@ services:
       - 8005:80
     volumes:
       - .:/go/src/github.com/watworks/watworks-public-api
-      - ./bin:/gopath/bin
     environment:
       COUNTER_SERVICE_URL: http://localhost:8006/
   
