@@ -1,0 +1,28 @@
+version: '2'
+
+services:
+  # note that the app container does NOT remain running - this is on purpose.
+  # use the `makefile` to build & run the binary as needed
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-dev
+    ports:
+      - 8005:80
+    volumes:
+      - .:/go/src/github.com/watworks/watworks-public-api
+      - ./bin:/gopath/bin
+    environment:
+      COUNTER_SERVICE_URL: http://localhost:8006/
+  
+  counter-service:
+    image: watworks/watworks-private-counter-service:0.1.0
+    ports:
+      - 8006:80
+    depends_on:
+      - redis
+    environment:
+      REDIS_URL: redis:6379
+  
+  redis:
+    image: redis:alpine

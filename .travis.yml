@@ -1,0 +1,14 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - make dev-up
+
+# notifications:
+#   slack:
+#     secure: ...
+
+script:
+  - make test
