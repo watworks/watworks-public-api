@@ -2,7 +2,7 @@ version: '2'
 
 services:
   # note that the app container does NOT remain running - this is on purpose.
-  # use the `makefile` to build & run the binary as needed
+  # use the `makefile` to build/run/test the binary as needed
   app:
     build:
       context: .

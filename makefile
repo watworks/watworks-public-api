@@ -17,7 +17,7 @@ dev-init:
 	ln -s $(shell pwd) $(GOPATH)/src/github.com/watworks/watworks-public-api
 
 deps-update:
-	docker-compose run --rm app go get ./...
+	docker-compose run --rm app dep ensure -update
 
 run:
 	docker-compose run --rm app go build -o .bin/watworks-public-api .
