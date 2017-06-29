@@ -1,15 +1,21 @@
 package main
 
 import (
-	"fmt"
+	"log"
+	"net/http"
 
-	"github.com/watworks/watworks-public-api/types"
+	"github.com/watworks/watworks-public-api/api"
 )
 
 func main() {
-	fmt.Println("Sup.")
 
-	foo := types.NewFoo()
+	// TODO: load a config file!  This will be fun.  If it doesn't load, must exit
+	if false {
+		log.Fatal("no config file")
+	}
 
-	fmt.Println(foo)
+	r := api.NewRouter()
+	http.ListenAndServe(":80", r)
+
+	log.Println("Running on :80...")
 }
