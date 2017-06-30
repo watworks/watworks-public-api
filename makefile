@@ -26,8 +26,8 @@ run: build
 	docker-compose run --rm app .bin/watworks-public-api
 
 test:
-	docker-compose run --rm app go list ./... | grep -v /vendor/ | tr '\r\n' ' ' | xargs -I % sh -c 'go test %'
-
+#	docker-compose run --rm app go list ./... | grep -v /vendor/ | tr '\r\n' ' ' | xargs -I % sh -c 'go test %'
+	docker-compose run --rm app sh -c 'go list ./...| grep -v /vendor/ | xargs go test'
 test-package:
 	docker-compose run --rm app go test github.com/watworks/watworks-public-api/$(PKG)
 
