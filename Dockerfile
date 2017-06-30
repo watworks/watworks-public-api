@@ -1,9 +1,10 @@
-FROM alpine:3.6
+FROM scratch
 
-COPY .bin/watworks-public-api /var/app/watworks-public-api
+COPY .bin/watworks-public-api /app/watworks-public-api
+COPY docker-entrypoint.sh /run.sh
 
-WORKDIR /var/app
+WORKDIR /app
 
-CMD ["./watworks-public-api"]
+EXPOSE 80
 
-# TODO: somehow generate the config file needed by the binary upon startup (pull from env vars)
+ENTRYPOINT ['/run.sh']

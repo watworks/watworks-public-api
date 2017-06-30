@@ -1,10 +1,17 @@
 package services
 
+import (
+	"io/ioutil"
+	"log"
+	"os"
+
+	yaml "gopkg.in/yaml.v2"
+)
+
 var conf *AppConfig
 
 type AppConfig struct {
-	ServerUrl         string
-	CounterServiceUrl string
+	CounterServiceUrl string `yaml:"counterServiceUrl"`
 }
 
 func Config() *AppConfig {
@@ -15,7 +22,15 @@ func Config() *AppConfig {
 	return conf
 }
 
-// TODO: change this to load a config file instead - expect the filepath as an env variable?
 func initConfig() {
-	conf = &AppConfig{":80", "http://localhost:8006/"}
+	p := os.Getenv("APP_CONF_PATH")
+	if p == "" {
+		log.Fatal("APP_CONF_PATH not defined")
+	}
+	c, err := ioutil.ReadFile(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = yaml.Unmarshal(c, &conf)
 }

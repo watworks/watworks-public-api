@@ -1,0 +1,2 @@
+# this config file is used when running the tests
+counterServiceUrl: 'http://counter-service:8006'

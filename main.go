@@ -15,10 +15,7 @@ import (
 func main() {
 	// get config and create the server
 	c := services.Config()
-	s := &http.Server{
-		Addr:    c.ServerUrl,
-		Handler: api.NewRouter(),
-	}
+	s := &http.Server{Addr: ":80", Handler: api.NewRouter()}
 	done := make(chan os.Signal, 2)
 	signal.Notify(done, os.Interrupt, syscall.SIGTERM)
 
@@ -32,7 +29,7 @@ func main() {
 	}()
 
 	// run server... will be closed from goroutine on interrupt
-	fmt.Println("Started!")
+	fmt.Printf("Starting with config: \n%+v\n", c)
 	s.ListenAndServe()
 	fmt.Print(" done!\n")
 	os.Exit(0)

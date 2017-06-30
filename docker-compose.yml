@@ -8,11 +8,11 @@ services:
       context: .
       dockerfile: Dockerfile-dev
     ports:
-      - 8005:80
+      - 8010:80
     volumes:
       - .:/go/src/github.com/watworks/watworks-public-api
     environment:
-      COUNTER_SERVICE_URL: http://localhost:8006/
+      APP_CONF_PATH: /go/src/github.com/watworks/watworks-public-api/conf/conf.dev.yml
   
   counter-service:
     image: watworks/watworks-private-counter-service:0.1.0
