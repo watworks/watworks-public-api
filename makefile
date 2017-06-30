@@ -19,8 +19,10 @@ dev-init:
 deps-update:
 	docker-compose run --rm app dep ensure -update
 
-run:
+build:
 	docker-compose run --rm app go build -o .bin/watworks-public-api .
+
+run: build
 	docker-compose run --rm app .bin/watworks-public-api
 
 test:
