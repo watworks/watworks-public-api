@@ -5,6 +5,7 @@ import (
 	"net/http"
 
 	"github.com/watworks/watworks-public-api/api"
+	"github.com/watworks/watworks-public-api/services"
 )
 
 func main() {
@@ -14,8 +15,8 @@ func main() {
 		log.Fatal("no config file")
 	}
 
-	r := api.NewRouter()
-	http.ListenAndServe(":80", r)
+	c := services.Config()
+	http.ListenAndServe(c.ServerUrl, api.NewRouter())
 
 	log.Println("Running on :80...")
 }

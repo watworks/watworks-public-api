@@ -17,5 +17,5 @@ func Config() *AppConfig {
 
 // TODO: change this to load a config file instead - expect the filepath as an env variable?
 func initConfig() {
-	conf = &AppConfig{":80", "http://localhost:8005/"}
+	conf = &AppConfig{":80", "http://localhost:8006/"}
 }

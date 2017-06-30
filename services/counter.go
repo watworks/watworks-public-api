@@ -31,7 +31,7 @@ func Counter() *CounterService {
 
 func initCounterService() {
 	counterService = &CounterService{
-		url:    "http://localhost:8004",
+		url:    Config().CounterServiceUrl,
 		client: &http.Client{},
 	}
 }
