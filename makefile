@@ -20,10 +20,10 @@ deps-update:
 	docker-compose run --rm app dep ensure -update
 
 build:
-	docker-compose run --rm -e CGO_ENABLED=0 -e GOOS=linux app go build -o .bin/watworks-public-api .
+	docker-compose run --rm app go build -o .bin/watworks-public-api .
 
 run: build
-	docker-compose run --rm app .bin/watworks-public-api
+	docker-compose run --rm --service-ports app .bin/watworks-public-api
 
 test:
 	docker-compose run --rm app sh -c 'go list ./...| grep -v /vendor/ | xargs go test'
