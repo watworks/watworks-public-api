@@ -18,3 +18,7 @@ To test and/or run the code, use the following:
 
 * `make test` - runs all tests
 * `make run` - compiles then runs the binary
+
+## Misc notes ##
+
+An earlier version of the app used a config file, and a custom docker entrypoint script to generate the config from ENV variables when the file was not present.  Generally I'd like to avoid that approach, but if it's needed, see examples in this post: https://medium.com/@kelseyhightower/12-fractured-apps-1080c73d481c

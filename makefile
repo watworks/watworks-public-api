@@ -20,7 +20,7 @@ deps-update:
 	docker-compose run --rm app dep ensure -update
 
 build:
-	docker-compose run --rm app go build -o .bin/watworks-public-api .
+	docker-compose run --rm -e CGO_ENABLED=0 -e GOOS=linux app go build -o .bin/watworks-public-api .
 
 run: build
 	docker-compose run --rm app .bin/watworks-public-api
@@ -34,8 +34,8 @@ test-package:
 fmt:
 	docker-compose run --rm app go fmt
 
-build-image:
-	echo TODO
+build-image: build
+	docker build -t watworks/watworks-public-api .
 
 publish-tag:
 	echo TODO
