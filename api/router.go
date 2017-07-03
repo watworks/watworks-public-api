@@ -8,7 +8,7 @@ import (
 func NewRouter() *negroni.Negroni {
 	// setup the core router w/ api routes
 	r := mux.NewRouter()
-	r.HandleFunc("/", HelloWorldHandler).Methods("GET")
+	r.HandleFunc("/", IndexHandler).Methods("GET")
 	r.HandleFunc("/hello", HelloHandler).Methods("GET")
 	r.HandleFunc("/goodbye", GoodbyeHandler).Methods("GET")
 	r.HandleFunc("/users", NotImplementedHandler).Methods("GET", "POST")

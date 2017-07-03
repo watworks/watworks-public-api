@@ -4,7 +4,10 @@ import (
 	"net/http"
 )
 
-func HelloWorldHandler(w http.ResponseWriter, r *http.Request) {
+func IndexHandler(w http.ResponseWriter, r *http.Request) {
+	// TODO: maybe return redirect to UI service index, or call it internally?
+	// ... or is it up to the UI service to render the app?
+	// It should be up to the UI service to render the app.
 	w.WriteHeader(200)
 	w.Write([]byte("Hello world!"))
 }

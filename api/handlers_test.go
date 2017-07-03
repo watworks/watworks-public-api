@@ -16,7 +16,7 @@ func TestHelloWorldHandler(t *testing.T) {
 	require.Equal(t, 200, res.StatusCode)
 }
 
-func TestHelloHandler(t *testing.T) {
+func TestIndexHandler(t *testing.T) {
 
 }
 

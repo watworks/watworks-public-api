@@ -8,5 +8,5 @@ import (
 
 func TestConfig(t *testing.T) {
 	c := Config()
-	require.Equal(t, "http://counter-service:8006", c.CounterServiceUrl)
+	require.Equal(t, "http://counter-service:80", c.CounterServiceUrl)
 }
