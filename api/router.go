@@ -8,21 +8,22 @@ import (
 	"github.com/urfave/negroni"
 )
 
-type route struct {
+// define all the api routes
+var routes = []struct {
 	method, path string
 	handler      http.HandlerFunc
+}{
+	{"GET", "/", IndexHandler},
+	{"GET", "/hello", HelloHandler},
+	{"GET", "/goodye", GoodbyeHandler},
+	{"GET|POST", "/users", NotImplementedHandler},
+	{"GET|PUT|PATCH|DELETE", "/users/{id}", NotImplementedHandler},
 }
 
-var routes = []route{
-	route{"GET", "/", IndexHandler},
-	route{"GET", "/hello", HelloHandler},
-	route{"GET", "/goodye", GoodbyeHandler},
-	route{"GET|POST", "/users", NotImplementedHandler},
-	route{"GET|PUT|PATCH|DELETE", "/users/{id}", NotImplementedHandler},
-}
-
+// NewRouter creates and returns a router with all api routes
+// and middlewares registered
 func NewRouter() *negroni.Negroni {
-	// setup the core router w/ api routes
+	// setup the core router w/ defined routes
 	router := mux.NewRouter()
 	for _, r := range routes {
 		router.HandleFunc(r.path, r.handler).Methods(strings.Split(r.method, "|")...)
